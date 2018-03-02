@@ -53,22 +53,22 @@ def to_shorter(exp):
                 term_first['number'] = eval(str(term_first['number']) + '+' + term_second['sign'] + str(term_second['number']))
 
     #TODO shorting inside of first part
-    pass
+        pass
 
     e = ''
     for term_first in exp['first']:
-        sign = '+' if term_first['sign'] == '' else '-'
+        sign = ' + ' if term_first['sign'] == '' else ' - '
         e += sign
         e += str(float(term_first['number']))
-        e += '* X^' + str(term_first['power'])
+        e += ' * X^' + str(term_first['power'])
 
     return e + '= 0'
 def reduce(expression):
+
     parts = {}
     parts['first'] = []
     parts['second'] = []
 
     parts = to_terms(expression, parts)
     exp = to_shorter(parts)
-    print(exp)
     return parts
