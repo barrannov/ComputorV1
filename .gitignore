@@ -6,6 +6,8 @@
 .idea
 .DS_Store
 
+__pycache__/
+
 # CMake
 cmake-build-debug/
 cmake-build-release/
