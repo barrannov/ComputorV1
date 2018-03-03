@@ -16,3 +16,10 @@ def get_reduced_expression(exp):
 
     return e[3:] + ' = 0'
 
+
+def change_sign(sign):
+    if sign == '':
+        return '-'
+    else:
+        return ''
+

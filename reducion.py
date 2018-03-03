@@ -46,11 +46,19 @@ def to_terms(exp, parts, part_str="first"):
     return parts
 
 def to_shorter(exp):
+    added = []
     for term_second in exp['second']:
         term_second['sign'] = '' if term_second['sign'] == '-' else '-'
         for term_first in exp['first']:
             if term_first['power'] == term_second['power']:
                 term_first['number'] = eval(str(term_first['number']) + '+' + term_second['sign'] + str(term_second['number']))
+                added.append(term_second)
+
+    for term in exp['second']:
+        if term not in added:
+            term['sign'] = change_sign(term['sign'])
+            exp['first'].append(term)
+
 
     #TODO shorting inside of first part
         pass
