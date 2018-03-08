@@ -1,5 +1,3 @@
-import re
-
 def change_sign(values):
     for d in values:
         d['sign'] = '-' if d['sign'] == '+' else '+'
@@ -59,18 +57,14 @@ def to_shorter(exp):
             term['sign'] = change_sign(term['sign'])
             exp['first'].append(term)
 
+    # for term in exp['first']:
+    #     if term['number'] == 0:
+    #         exp['first'].remove(term)
 
     #TODO shorting inside of first part
         pass
 
-    e = ''
-    for term_first in exp['first']:
-        sign = ' + ' if term_first['sign'] == '' else ' - '
-        e += sign
-        e += str(float(term_first['number']))
-        e += ' * X^' + str(term_first['power'])
-
-    return e + '= 0'
+    return exp
 def reduce(expression):
 
     parts = {}
@@ -79,4 +73,4 @@ def reduce(expression):
 
     parts = to_terms(expression, parts)
     exp = to_shorter(parts)
-    return parts
+    return exp
