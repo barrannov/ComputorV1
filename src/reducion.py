@@ -1,4 +1,6 @@
-def change_sign(values):
+from utils import *
+
+def change_sign_all_signs(values):
     for d in values:
         d['sign'] = '-' if d['sign'] == '+' else '+'
 
@@ -63,11 +65,12 @@ def to_shorter(exp):
     added = []
 
     for term_second in exp['second']:
-        term_second['sign'] = '' if term_second['sign'] == '-' else '-'
         for term_first in exp['first']:
             if term_first['power'] == term_second['power']:
+                term_second['sign'] = '' if term_second['sign'] == '-' else '-'
                 term_first['number'] = eval(str(term_first['number']) + '+' + term_second['sign'] + str(term_second['number']))
                 added.append(term_second)
+                break
 
     for term in exp['second']:
         if term not in added:

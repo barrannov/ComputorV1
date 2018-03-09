@@ -132,10 +132,16 @@ def solve(exp):
 
     exp = clean_term_zero(exp)
 
-    if len(exp) == 2:
+    if len(exp) < 3:
         # 1 * X^0 + 2 * X^1 = 0
-        return {'message': THE_SOLUTION_IS,
-                'solutions': [solve_simple(exp)]}
+        res_simple = solve_simple(exp)
+        if res_simple == 0:
+            return {'message': THE_SOLUTION_IS,
+                    'solutions': [res_simple]}
+        else:
+            return {'message': THE_SOLUTION_IS,
+                    'solutions': [res_simple]}
+
     elif len(exp) == 3:
         # 1 * X^0 + 2 * X^1 - 3 * X^2= 0
         return solve_squad(exp)

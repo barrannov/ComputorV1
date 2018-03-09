@@ -39,7 +39,10 @@ def begin_solving(exp, res_print=False):
         solution['message'] = "The polynomial degree is stricly greater than 2, I can't solve."
     elif power == 0:
         solution['message'] = THE_SOLUTION_IS
-        solution['solutions'].append(remove_zero(expression[0]['number']))
+        if remove_zero(expression[0]['number']) == 0 :
+            solution['solutions'].append(ALL_NUMBERS)
+        else:
+            solution['solutions'].append(NO_NUMBERS)
     else:
         solution.update(solve(expression))
 
