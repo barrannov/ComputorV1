@@ -4,8 +4,9 @@ def change_sign(values):
 
     return values
 
+
 def find_next_term(exp):
-    res = {}
+    res = dict()
 
     res['sign'] = '-' if '-' in exp else '+'
     res['number'] = int(exp[:exp.index('*')])
@@ -13,7 +14,20 @@ def find_next_term(exp):
 
     return res
 
+
 def to_terms(exp, parts, part_str="first"):
+    """ split our equations int separate terms:
+
+         5 * X^0 + 4 * X^1 = 4 * X^0 ->
+         {'first':[
+            {'number': 5, 'power':0, 'sign':'+'},
+            {'number': 4, 'power':1, 'sign':'+'}]
+        'second':[
+            {'number': 4, 'power':0, 'sign':'+'}]
+         }
+
+    """
+
     res = {}
 
     if exp[0] == '-':
@@ -31,7 +45,6 @@ def to_terms(exp, parts, part_str="first"):
     res['power'] = int(exp[exp.index('^') + 1: exp.index('^') + 2])
     exp = exp[exp.index('^')+2:]
 
-
     parts[part_str].append(res)
 
     if exp:
@@ -43,8 +56,12 @@ def to_terms(exp, parts, part_str="first"):
 
     return parts
 
+
 def to_shorter(exp):
+    """ simplifies everything what is after equals sign"""
+
     added = []
+
     for term_second in exp['second']:
         term_second['sign'] = '' if term_second['sign'] == '-' else '-'
         for term_first in exp['first']:
@@ -57,17 +74,20 @@ def to_shorter(exp):
             term['sign'] = change_sign(term['sign'])
             exp['first'].append(term)
 
-    # for term in exp['first']:
-    #     if term['number'] == 0:
-    #         exp['first'].remove(term)
+    return exp['first']
 
-    #TODO shorting inside of first part
-        pass
 
-    return exp
 def reduce(expression):
+    """ simplifies our equation
 
-    parts = {}
+        5 * X^0 + 4 * X^1 = 4 * X^0 -> 1 * X^0 + 4 * X^1 = 0
+
+        and send all parts of it back
+    """
+
+    parts = dict()
+
+    # split our equation into two parts by '='
     parts['first'] = []
     parts['second'] = []
 
