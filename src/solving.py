@@ -1,5 +1,6 @@
-from utils import *
 from copy import deepcopy
+
+from src.utils import *
 
 """All functions for solving equation"""
 

@@ -1,6 +1,7 @@
 import unittest
+
 from ComputorV1 import *
-from utils import *
+from src.utils import *
 
 PRINT_RES = False
 

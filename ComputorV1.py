@@ -1,7 +1,8 @@
-from reducion import *
-from validation import *
-from solving import *
-from utils import *
+from src.reducion import *
+from src.solving import *
+from src.utils import *
+
+from src.validation import *
 
 PRINT_RES = True
 
