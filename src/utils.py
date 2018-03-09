@@ -1,6 +1,6 @@
 MESSAGE_DISCRIMINANT_EQUALS_ZERO = "Discriminant equals zero, the one solution is:"
 MESSAGE_DISCRIMINANT_IS_STRICTLY_POS = "Discriminant is strictly positive, the two solutions are:"
-MESSAGE_DISCRIMINANT_IS_STRICTLY_NEG = "Discriminant is strictly negative, there are no solutions found."
+MESSAGE_DISCRIMINANT_IS_STRICTLY_NEG = "Discriminant is strictly negative, there are two complex solutions found."
 MESSAGE_GREATER_THAN_2_CANT_SOLVE = "The polynomial degree is stricly greater than 2, I can't solve."
 THE_SOLUTION_IS = "The solution is: "
 PRINT_RES = False

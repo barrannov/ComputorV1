@@ -1,6 +1,7 @@
 import unittest
 
 from ComputorV1 import *
+
 from src.utils import *
 
 PRINT_RES = False
@@ -31,11 +32,29 @@ class SolveTestCases(unittest.TestCase):
          'message': MESSAGE_DISCRIMINANT_IS_STRICTLY_POS,
          'solutions': [-4, 1]},
 
-        {'equation': "5 * x^2 + 3 * x^1 + 7*x^0 = 0 * X^0",
+        {'equation': "5 * x^2 + 3 * x^1 + 7*x^0 = 0",
          'polynomial_degree': 2,
          'reduced_form': "5 * X^2 + 3 * X^1 + 7 * X^0 = 0",
          'message': MESSAGE_DISCRIMINANT_IS_STRICTLY_NEG,
-         'solutions': []},
+         'solutions': ["-0.3 - i * 1.144552", "-0.3 + i * 1.144552"]},
+
+        {'equation': "3 * X^0 + 1 * X^1 = 0 * X^0 - 1*X^1-3*X^2",
+         'polynomial_degree': 2,
+         'reduced_form': "3 * X^0 + 2 * X^1 + 3 * X^2 = 0",
+         'message': MESSAGE_DISCRIMINANT_IS_STRICTLY_NEG,
+         'solutions': ["-0.333333 - i * 0.942809", "-0.333333 + i * 0.942809"]},
+
+        {'equation': "1 * X^2 - 2 * X^1 + 34 * X^0 = 0",
+         'polynomial_degree': 2,
+         'reduced_form': "1 * X^2 - 2 * X^1 + 34 * X^0 = 0",
+         'message': MESSAGE_DISCRIMINANT_IS_STRICTLY_NEG,
+         'solutions': ["1 - i * 5.744562", "1 + i * 5.744562"]},
+
+        {'equation': "5 * X^0 + 3 * X^1 + 3 * X^2 = 1 * X^0 + 0 * X^1",
+         'polynomial_degree': 2,
+         'reduced_form': "4 * X^0 + 3 * X^1 + 3 * X^2 = 0",
+         'message': MESSAGE_DISCRIMINANT_IS_STRICTLY_NEG,
+         'solutions': ["-0.5 - i * 1.040833", "-0.5 + i * 1.040833"]},
     ]
 
     squad_equations_reduce_needed = [

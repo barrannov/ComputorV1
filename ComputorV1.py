@@ -48,6 +48,7 @@ def begin_solving(exp, res_print=False):
 
     return solution
 
+
 try:
     res = begin_solving(validate(sys.argv), PRINT_RES)
 except Exception:

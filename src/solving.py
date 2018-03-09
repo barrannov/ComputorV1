@@ -1,5 +1,4 @@
 from copy import deepcopy
-
 from src.utils import *
 
 """All functions for solving equation"""
@@ -22,28 +21,12 @@ def remove_zero(number):
     if number == int(number):
         return int(number)
     else:
-        return number
+        return round(number, 6)
 
 
 def count_root(value):
-    """ counts squad root for any number, up to 0.000001 precision
-        count_root(324) == 17.999999
-    """
 
-    if value == 0:
-        return 0
-    dot = 0.000001
-
-    precision = 1.0
-    res_root = 0.0
-
-    while precision > dot:
-        while res_root * res_root < value:
-            res_root += precision
-        res_root -= precision
-        precision /= 10
-
-    return round(res_root, 6)
+    return round(value**0.5, 6)
 
 
 def find_roots_for_squad_exp(disc, sign='+'):
@@ -64,6 +47,25 @@ def find_roots_for_squad_exp(disc, sign='+'):
     res = res_up / two_a
     return remove_zero(round(res, 6))
 
+
+def find_roots_for_squad_exp_complex(disc, sign='+'):
+    """ finds rots of equations for solving squad equations
+        x = (-b sign count_root(D)) / (2a)
+
+        sign could be '+' or '-' as well
+        count_root - function for counting squad root
+
+    """
+
+    two_a = eval(disc['a']['sign'] + str(float(disc['a']['number']))) * 2
+    disc['b']['sign'] = change_sign(disc['b']['sign'])
+    root_disc = count_root(disc['disc'] * -1)
+    exp_up_first = disc['b']['sign'] + str(disc['b']['number'])
+    res_first = float(eval(exp_up_first)) / two_a
+    res_second = root_disc / two_a
+
+    res = str(remove_zero(res_first)) + ' '+sign+' '+'i * '+ str(remove_zero(res_second))
+    return res
 
 def solve_simple(exp):
     if exp[0]['power'] == 1:
@@ -119,8 +121,10 @@ def solve_squad(exp):
 
     # if discriminant < 0 there are no solutions should be
     else:
+        sol2 = find_roots_for_squad_exp_complex(deepcopy(disc))
+        sol1 = find_roots_for_squad_exp_complex(deepcopy(disc), '-')
         return {'message': MESSAGE_DISCRIMINANT_IS_STRICTLY_NEG,
-                'solutions': []}
+                'solutions': [sol1, sol2]}
 
 
 def solve(exp):
