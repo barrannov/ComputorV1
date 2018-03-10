@@ -86,6 +86,13 @@ class SolveTestCases(unittest.TestCase):
          'message': THE_SOLUTION_IS,
          'solutions': [-0.25]
          },
+        
+        {'equation': "5.5 * X^0 = 4 * X^0 + 7.2 * X^1",
+         'polynomial_degree': 1,
+         'reduced_form': "1.5 * X^0 - 7.2 * X^1 = 0",
+         'message': THE_SOLUTION_IS,
+         'solutions': [0.208333]
+         },
     ]
 
     very_simple_equations = [

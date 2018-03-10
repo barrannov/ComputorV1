@@ -76,8 +76,8 @@ def solve_simple(exp):
         b = exp[0]
         a = exp[1]
     b['sign'] = change_sign(b['sign'])
-    exp = b['sign'] + str(b['number']) + '/' + str(a['number'])
-    return eval(exp)
+    exp = b['sign'] + str(b['number']) + '/' + a['sign'] + str(a['number'])
+    return remove_zero(eval(exp))
 
 
 def find_discriminant(exp):
