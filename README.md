@@ -8,4 +8,4 @@ Create a polynomial equation resolver (up to the 2nd grade). The resolver must a
 ### Usage
 $> python computor.py [option] "polinomial equation"
 
-e.g: $>python ComputorV1.py "5 + 3X + 3 * X^2 = X^2 + 0 * X"
+e.g: $>python ComputorV1.py "5 * X^0 + 3 * X^1 + 3 * X^2 = 1 * X^2 + 0 * X^1"
